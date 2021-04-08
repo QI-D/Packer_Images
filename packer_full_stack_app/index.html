@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+    }
+    .quote {
+      font-size: 50px;
+      margin: 100px;
+      text-align: center;
+      font-family: 'Courier New', Courier, monospace;
+    }
+  </style>
+
+  <title>😎</title>
+</head>
+<body>
+
+  <p class="quote"></p>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <script>
+    let quoteTag = $(".quote")
+    async function loadQuote() {
+      let { quote } = await $.get("https://api.kanye.rest")
+      quoteTag.text(quote)
+    }
+    loadQuote()
+    $('body').on('click', loadQuote)
+  </script>
+
+</body>
+</html>
